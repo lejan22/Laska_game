@@ -47,8 +47,8 @@ public class Player_controller : MonoBehaviour
     private void FixedUpdate()
     {
         
-       horizontalInput = Input.GetAxis("Horizontal");
-       verticalInput = Input.GetAxis("Vertical");
+       //horizontalInput = Input.GetAxis("Horizontal");
+       //verticalInput = Input.GetAxis("Vertical");
 
        //playerRigidbody.AddForce(Vector3.forward * speed * verticalInput, ForceMode.Force);
        //playerRigidbody.AddForce(Vector3.right * horizontalInput * speed);
@@ -57,25 +57,25 @@ public class Player_controller : MonoBehaviour
 
        // transform.Rotate(Vector3.up * 100 * Time.deltaTime * horizontalInput);
 
-        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-        movementDirection.Normalize();
+        //Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+       //movementDirection.Normalize();
 
-        transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
+       // transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
 
-        if (movementDirection != Vector3.zero)
+       // if (movementDirection != Vector3.zero)
         {
-            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+          //  Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+          //  transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
 
             // Velocidad maxima del rigidbody del player
-            if (playerRigidbody.velocity.magnitude > maxspeed)
-            {
-                // Mantiene a la velocidad maxima
-                playerRigidbody.velocity = playerRigidbody.velocity.normalized * maxspeed;
-            }
+            //if (playerRigidbody.velocity.magnitude > maxspeed)
+           // {
+           //     // Mantiene a la velocidad maxima
+               // playerRigidbody.velocity = playerRigidbody.velocity.normalized * maxspeed;
+          //  }
 
 
-            Stop();
+          //  Stop();
         }
        
     }
