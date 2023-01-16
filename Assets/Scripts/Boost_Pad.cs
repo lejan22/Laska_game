@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Boost_Pad : MonoBehaviour
 {
-    private Player_controller playercontroller;
+    private PlayerController playercontroller;
+
+    public float power = 20f;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +18,14 @@ public class Boost_Pad : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            playercontroller.speed = +5;
-        }
+        
+        
+        // Obtiene el rigidbody del GameObject
+        Rigidbody playerRigidbody = other.gameObject.GetComponent<Rigidbody>();
 
+        playerRigidbody.AddForce(Vector3.forward * power, ForceMode.Impulse);
     }
+    
 }

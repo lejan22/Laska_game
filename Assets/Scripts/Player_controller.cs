@@ -47,11 +47,11 @@ public class Player_controller : MonoBehaviour
     private void FixedUpdate()
     {
         
-       //horizontalInput = Input.GetAxis("Horizontal");
-       //verticalInput = Input.GetAxis("Vertical");
+       horizontalInput = Input.GetAxis("Horizontal");
+       verticalInput = Input.GetAxis("Vertical");
 
-       //playerRigidbody.AddForce(Vector3.forward * speed * verticalInput, ForceMode.Force);
-       //playerRigidbody.AddForce(Vector3.right * horizontalInput * speed);
+       playerRigidbody.AddForce(Vector3.forward * speed * verticalInput, ForceMode.Force);
+       playerRigidbody.AddForce(Vector3.right * horizontalInput * speed);
        // transform.Translate(Vector3.forward * speed * Time.deltaTime * verticalInput);
        // transform.Translate(Vector3.forward * speed * Time.deltaTime * horizontalInput);
 
@@ -68,14 +68,14 @@ public class Player_controller : MonoBehaviour
           //  transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
 
             // Velocidad maxima del rigidbody del player
-            //if (playerRigidbody.velocity.magnitude > maxspeed)
-           // {
-           //     // Mantiene a la velocidad maxima
-               // playerRigidbody.velocity = playerRigidbody.velocity.normalized * maxspeed;
-          //  }
+           if (playerRigidbody.velocity.magnitude > maxspeed)
+            {
+                // Mantiene a la velocidad maxima
+                playerRigidbody.velocity = playerRigidbody.velocity.normalized * maxspeed;
+           }
 
 
-          //  Stop();
+            Stop();
         }
        
     }

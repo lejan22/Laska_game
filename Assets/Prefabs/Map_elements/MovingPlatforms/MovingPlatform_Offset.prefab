@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 9005427154758782790}
   - component: {fileID: 9005427154758782791}
   - component: {fileID: 9005427154758782792}
-  - component: {fileID: 9005427154758782793}
-  m_Layer: 0
+  - component: {fileID: 77335295}
+  - component: {fileID: 77335290}
+  m_Layer: 6
   m_Name: moving platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3583,7 +3584,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -3614,25 +3615,33 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!95 &9005427154758782793
-Animator:
-  serializedVersion: 3
+--- !u!114 &77335295
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9005427154758782795}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2afe9469e547c6b47897c32460f2d113, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8e660f1dfdc1504e82965d1f6360e83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waypointpath: {fileID: 0}
+  _speed: 2
+--- !u!65 &77335290
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005427154758782795}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 0.5, z: 2}
+  m_Center: {x: 1, y: 0.6, z: -1}
 --- !u!1 &9005427155242917206
 GameObject:
   m_ObjectHideFlags: 0
@@ -3642,7 +3651,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9005427155242917205}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MovingPlatform_Offset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3656,7 +3665,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9005427155242917206}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
