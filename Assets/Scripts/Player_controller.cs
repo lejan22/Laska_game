@@ -7,7 +7,7 @@ public class Player_controller : MonoBehaviour
     public int lives = 3;
     public float speed = 30f;
     public float maxspeed = 30f;
-    public float rotationSpeed = 300f;
+   
     public float jumpForce = 2f;
     public float diveForce = 12f;
     public float stompForce = 15f;
@@ -20,7 +20,10 @@ public class Player_controller : MonoBehaviour
     private bool jumpInputReleased;
     private bool canDive;
 
-    
+    public float turnSmoothTime = 0.1f;
+
+    float turnSmoothVelocity;
+
 
     private Rigidbody playerRigidbody;
 
@@ -43,32 +46,22 @@ public class Player_controller : MonoBehaviour
         Diving();
 
         ActionStomp();
+
     }
     private void FixedUpdate()
     {
+
         
-       horizontalInput = Input.GetAxis("Horizontal");
+
+        horizontalInput = Input.GetAxis("Horizontal");
        verticalInput = Input.GetAxis("Vertical");
 
-       playerRigidbody.AddForce(Vector3.forward * speed * verticalInput, ForceMode.Force);
-       playerRigidbody.AddForce(Vector3.right * horizontalInput * speed);
-       // transform.Translate(Vector3.forward * speed * Time.deltaTime * verticalInput);
-       // transform.Translate(Vector3.forward * speed * Time.deltaTime * horizontalInput);
+       playerRigidbody.AddRelativeForce(Vector3.forward * speed * verticalInput, ForceMode.Force);
+       playerRigidbody.AddRelativeForce(Vector3.right * horizontalInput * speed);
+        //transform.Rotate(Vector3.up * (speed *2) * Time.deltaTime * horizontalInput);
 
-       // transform.Rotate(Vector3.up * 100 * Time.deltaTime * horizontalInput);
-
-        //Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-       //movementDirection.Normalize();
-
-       // transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
-
-       // if (movementDirection != Vector3.zero)
-        {
-          //  Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-          //  transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-
-            // Velocidad maxima del rigidbody del player
-           if (playerRigidbody.velocity.magnitude > maxspeed)
+        // Velocidad maxima del rigidbody del player
+        if (playerRigidbody.velocity.magnitude > maxspeed)
             {
                 // Mantiene a la velocidad maxima
                 playerRigidbody.velocity = playerRigidbody.velocity.normalized * maxspeed;
@@ -76,7 +69,7 @@ public class Player_controller : MonoBehaviour
 
 
             Stop();
-        }
+       
        
     }
     //Salta
@@ -149,21 +142,15 @@ public class Player_controller : MonoBehaviour
             playerRigidbody.velocity = (Vector3.zero);
         }
     }
-    private void characterRotation()
+
+    public void GetHurt()
     {
-        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
 
-        movementDirection.Normalize();
-
-        transform.Translate(movementDirection * speed * Time.deltaTime
-, Space.World);
-
-        if (movementDirection != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-        }
+        lives--;
     }
+
+
+    
     private bool IsOnGround()
     {
         // Raycast hacia abajo con una distancia determinada
