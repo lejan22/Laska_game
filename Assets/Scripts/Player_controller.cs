@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class Player_controller : MonoBehaviour
 {
-    public int lives = 3;
+    [Header("Life")]
+    public int MaxHealth = 3;
+    public int currenthealth = 3;
+    public Healthbar healthBar;
+
+    [Header("Speed")]
     public float speed = 30f;
     public float maxspeed = 30f;
-   
-    public float jumpForce = 2f;
+
+    [Header("Jump")]
+    public float jumpForce = 210.0f;
+    private float verticalVelocity;
+    private float gravity = 50.0f;
+    
     public float diveForce = 12f;
     public float stompForce = 15f;
 
+    [Header("controller")]
     private float horizontalInput, verticalInput;
     private bool isJumping;
 
@@ -24,18 +34,27 @@ public class Player_controller : MonoBehaviour
 
     float turnSmoothVelocity;
 
-
+    [Header("elements")]
     private Rigidbody playerRigidbody;
 
     public LayerMask groundLayerMask;
 
     private float groundDistance = 1.5f;
 
+    private Animator _animator;
+
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
-        lives = 3;
+
+        healthBar = FindObjectOfType<Healthbar>();
+        MaxHealth = currenthealth;
+        healthBar.SetMaxHealth(MaxHealth);
+
     }
 
     // Update is called once per frame
@@ -56,8 +75,8 @@ public class Player_controller : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
        verticalInput = Input.GetAxis("Vertical");
 
-       playerRigidbody.AddRelativeForce(Vector3.forward * speed * verticalInput, ForceMode.Force);
-       playerRigidbody.AddRelativeForce(Vector3.right * horizontalInput * speed);
+       //playerRigidbody.AddRelativeForce(Vector3.forward * speed * verticalInput, ForceMode.Force);
+      // playerRigidbody.AddRelativeForce(Vector3.right * horizontalInput * speed);
         //transform.Rotate(Vector3.up * (speed *2) * Time.deltaTime * horizontalInput);
 
         // Velocidad maxima del rigidbody del player
@@ -72,19 +91,41 @@ public class Player_controller : MonoBehaviour
        
        
     }
+
+    private void OnCollisionEnter(Collision othercollider)
+    {
+        if (othercollider.gameObject.CompareTag("Obstacle"))
+        {
+            GetHurt();
+        }
+        
+    }
     //Salta
     private void Jumping()
     {
         if (Input.GetKeyDown(KeyCode.Space) && IsOnGround())
         {
+           // verticalVelocity = -gravity * Time.deltaTime;
+           // verticalVelocity = jumpForce;
             playerRigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            
+            verticalVelocity -= gravity * Time.deltaTime;
 
             isJumping = true;
 
             canDive = true;
-            
         }
+       // else
+        //{
+           // if (!IsOnGround())
+           // {
+              //  verticalVelocity -= gravity * Time.deltaTime;
+           // }
+      //  }
+       // Vector3 moveVector = Vector3.zero;
+       // moveVector.x = Input.GetAxis("Horizontal") * speed;
+       // moveVector.y = verticalVelocity;
+       // moveVector.z = Input.GetAxis("Vertical") * speed;
+
 
         
     }
@@ -145,8 +186,30 @@ public class Player_controller : MonoBehaviour
 
     public void GetHurt()
     {
+        currenthealth--;
 
-        lives--;
+        if (currenthealth == 2)
+        
+        {
+
+            speed = +12f;
+            maxspeed = +12f;
+            jumpForce = +12f;
+            healthBar.SetHealth(currenthealth);
+            healthBar.Animate();
+        }
+
+        if (currenthealth == 1)
+
+        {
+            speed = +15f;
+            maxspeed = +15f;
+            jumpForce = +15f;
+            healthBar.SetHealth(currenthealth);
+            healthBar.Animate();
+        }
+
+
     }
 
 
@@ -159,7 +222,8 @@ public class Player_controller : MonoBehaviour
         // Devuelve cualquier bool diferente a NULL
         return hitData.collider != null;
 
-       
+        
+        
     }
      
 
