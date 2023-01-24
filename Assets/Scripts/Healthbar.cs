@@ -10,9 +10,11 @@ public class Healthbar : MonoBehaviour
 
     public Slider slider;
 
+    public GameObject icon;
+
     private void Start()
     {
-        _animator = GetComponent<Animator>();
+        _animator = icon.GetComponent<Animator>();
     }
 
     //Que el slider empieze concorde a la vida maxima que tiene el jefe

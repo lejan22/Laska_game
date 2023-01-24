@@ -16,7 +16,7 @@ public class Player_controller : MonoBehaviour
     [Header("Jump")]
     public float jumpForce = 210.0f;
     private float verticalVelocity;
-    private float gravity = 50.0f;
+    private float gravity = 80.0f;
     
     public float diveForce = 12f;
     public float stompForce = 15f;
@@ -43,13 +43,17 @@ public class Player_controller : MonoBehaviour
 
     private Animator _animator;
 
+    public GameObject icon;
 
-    
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
+
+        _animator = icon.GetComponent<Animator>();
 
         healthBar = FindObjectOfType<Healthbar>();
         MaxHealth = currenthealth;
@@ -66,6 +70,8 @@ public class Player_controller : MonoBehaviour
 
         ActionStomp();
 
+        Stop();
+
     }
     private void FixedUpdate()
     {
@@ -75,8 +81,8 @@ public class Player_controller : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
        verticalInput = Input.GetAxis("Vertical");
 
-       //playerRigidbody.AddRelativeForce(Vector3.forward * speed * verticalInput, ForceMode.Force);
-      // playerRigidbody.AddRelativeForce(Vector3.right * horizontalInput * speed);
+       playerRigidbody.AddRelativeForce(Vector3.forward * speed * verticalInput, ForceMode.Force);
+       playerRigidbody.AddRelativeForce(Vector3.right * horizontalInput * speed);
         //transform.Rotate(Vector3.up * (speed *2) * Time.deltaTime * horizontalInput);
 
         // Velocidad maxima del rigidbody del player
@@ -86,8 +92,11 @@ public class Player_controller : MonoBehaviour
                 playerRigidbody.velocity = playerRigidbody.velocity.normalized * maxspeed;
            }
 
-
-            Stop();
+       // if(verticalInput == 0)
+        //{
+          //  playerRigidbody.velocity = playerRigidbody.velocity.normalized * 0;
+      //  }
+            
        
        
     }
@@ -156,7 +165,7 @@ public class Player_controller : MonoBehaviour
     private void ActionStomp()
     {
         // Si presionas el click izquierdo del raton
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             // Aplica una fuerza, un impulso vertical hacia abajo
             playerRigidbody.AddForce(Vector3.down * stompForce, ForceMode.Impulse);
@@ -168,11 +177,11 @@ public class Player_controller : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.W))
         {
-            playerRigidbody.velocity =(Vector3.zero);
+            playerRigidbody.velocity =  Vector3.zero;
         }
         if (Input.GetKeyUp(KeyCode.A))
         {
-            playerRigidbody.velocity =(Vector3.zero);
+            playerRigidbody.velocity = (Vector3.zero);
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
@@ -188,25 +197,29 @@ public class Player_controller : MonoBehaviour
     {
         currenthealth--;
 
+      
+        
         if (currenthealth == 2)
         
         {
 
-            speed = +12f;
-            maxspeed = +12f;
-            jumpForce = +12f;
+            speed += 2f;
+            maxspeed += 2f;
+            jumpForce += 2f;
             healthBar.SetHealth(currenthealth);
-            healthBar.Animate();
+            
+            
         }
 
         if (currenthealth == 1)
 
         {
-            speed = +15f;
-            maxspeed = +15f;
-            jumpForce = +15f;
+            speed += 2f;
+            maxspeed += 2f;
+            jumpForce += 2f;
             healthBar.SetHealth(currenthealth);
-            healthBar.Animate();
+
+            _animator.Play("Idle3");
         }
 
 
