@@ -92,13 +92,13 @@ public class Player_controller : MonoBehaviour
                 playerRigidbody.velocity = playerRigidbody.velocity.normalized * maxspeed;
            }
 
-       // if(verticalInput == 0)
+        // if(verticalInput == 0)
         //{
-          //  playerRigidbody.velocity = playerRigidbody.velocity.normalized * 0;
-      //  }
-            
-       
-       
+        //  playerRigidbody.velocity = playerRigidbody.velocity.normalized * 0;
+        //  }
+
+        Stop();
+
     }
 
     private void OnCollisionEnter(Collision othercollider)
@@ -177,19 +177,19 @@ public class Player_controller : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.W))
         {
-            playerRigidbody.velocity =  Vector3.zero;
+            playerRigidbody.AddForce(Vector3.back * speed/2 , ForceMode.Force);
         }
         if (Input.GetKeyUp(KeyCode.A))
         {
-            playerRigidbody.velocity = (Vector3.zero);
+            playerRigidbody.AddForce(Vector3.right * speed/2, ForceMode.Force);
         }
         if (Input.GetKeyUp(KeyCode.S))
         {
-            playerRigidbody.velocity= (Vector3.zero);
+            playerRigidbody.AddForce(Vector3.forward * speed / 2, ForceMode.Force);
         }
         if (Input.GetKeyUp(KeyCode.D))
         {
-            playerRigidbody.velocity = (Vector3.zero);
+            playerRigidbody.AddForce(Vector3.left * speed / 2, ForceMode.Force);
         }
     }
 
