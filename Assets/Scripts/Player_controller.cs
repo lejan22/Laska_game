@@ -207,8 +207,9 @@ public class Player_controller : MonoBehaviour
             maxspeed += 2f;
             jumpForce += 2f;
             healthBar.SetHealth(currenthealth);
-            
-            
+
+            _animator.Play("Idle2");
+
         }
 
         if (currenthealth == 1)
