@@ -28,7 +28,10 @@ public class Player_controller : MonoBehaviour
     public float jumpCutMultiplier = 9.8f;
     private int lastJumpTime;
     private bool jumpInputReleased;
+
     private bool canDive;
+
+    private bool canDJump;
 
     public float turnSmoothTime = 0.1f;
 
@@ -69,6 +72,7 @@ public class Player_controller : MonoBehaviour
         Diving();
 
         ActionStomp();
+        DoubleJump();
 
         Stop();
 
@@ -110,7 +114,7 @@ public class Player_controller : MonoBehaviour
         
     }
     //Salta
-    private void Jumping()
+    public void Jumping()
     {
         if (Input.GetKeyDown(KeyCode.Space) && IsOnGround())
         {
@@ -122,18 +126,10 @@ public class Player_controller : MonoBehaviour
             isJumping = true;
 
             canDive = true;
+
+            canDJump = true;
         }
-       // else
-        //{
-           // if (!IsOnGround())
-           // {
-              //  verticalVelocity -= gravity * Time.deltaTime;
-           // }
-      //  }
-       // Vector3 moveVector = Vector3.zero;
-       // moveVector.x = Input.GetAxis("Horizontal") * speed;
-       // moveVector.y = verticalVelocity;
-       // moveVector.z = Input.GetAxis("Vertical") * speed;
+       
 
 
         
@@ -161,6 +157,16 @@ public class Player_controller : MonoBehaviour
 
         
 
+    }
+
+    private void DoubleJump()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !IsOnGround() && canDJump)
+        {
+            playerRigidbody.AddForce(Vector3.up * 5, ForceMode.Impulse);
+
+            canDJump = false;
+        }
     }
     private void ActionStomp()
     {
@@ -203,8 +209,8 @@ public class Player_controller : MonoBehaviour
         
         {
 
-            speed += 2f;
-            maxspeed += 2f;
+            speed += 5f;
+            maxspeed += 5f;
             jumpForce += 2f;
             healthBar.SetHealth(currenthealth);
 
@@ -215,8 +221,8 @@ public class Player_controller : MonoBehaviour
         if (currenthealth == 1)
 
         {
-            speed += 2f;
-            maxspeed += 2f;
+            speed += 5f;
+            maxspeed += 5f;
             jumpForce += 2f;
             healthBar.SetHealth(currenthealth);
 
@@ -228,7 +234,7 @@ public class Player_controller : MonoBehaviour
 
 
     
-    private bool IsOnGround()
+    public bool IsOnGround()
     {
         // Raycast hacia abajo con una distancia determinada
         Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitData, groundDistance, groundLayerMask);
@@ -239,6 +245,5 @@ public class Player_controller : MonoBehaviour
         
         
     }
-     
-
-}
+  
+ }
