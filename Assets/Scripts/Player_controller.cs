@@ -16,7 +16,7 @@ public class Player_controller : MonoBehaviour
     [Header("Jump")]
     public float jumpForce = 210.0f;
     private float verticalVelocity;
-    private float gravity = 80.0f;
+    private float gravity = 0.21875f;
     
     public float diveForce = 12f;
     public float stompForce = 15f;
@@ -73,6 +73,7 @@ public class Player_controller : MonoBehaviour
 
         ActionStomp();
         DoubleJump();
+        GoSlow();
 
         Stop();
 
@@ -232,7 +233,17 @@ public class Player_controller : MonoBehaviour
 
     }
 
-
+    public void GoSlow()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            speed -= 15;
+        }
+        if (Input.GetKeyUp(KeyCode.C))
+        {
+            speed +=15;
+        }
+    }
     
     public bool IsOnGround()
     {

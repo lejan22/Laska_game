@@ -25,7 +25,7 @@ public class Boost_Pad : MonoBehaviour
         // Obtiene el rigidbody del GameObject
         Rigidbody playerRigidbody = other.gameObject.GetComponent<Rigidbody>();
 
-        playerRigidbody.AddRelativeForce(Vector3.forward * power, ForceMode.Impulse);
+        playerRigidbody.AddForce(transform.forward * power, ForceMode.Impulse);
     }
     
 }

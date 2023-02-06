@@ -13,6 +13,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Bloquea el uso del raton
+        Cursor.lockState = CursorLockMode.Locked;
+
         isGameOver = false;
     }
 
