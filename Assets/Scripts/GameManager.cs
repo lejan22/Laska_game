@@ -10,12 +10,13 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI timestamp;
     private bool isGameOver = false;
     private float time, minutes, seconds, miliseconds;
+    public Player_controller Playercontroller;
     // Start is called before the first frame update
     void Start()
     {
         // Bloquea el uso del raton
         Cursor.lockState = CursorLockMode.Locked;
-
+        Playercontroller = FindObjectOfType<Player_controller>();
         isGameOver = false;
     }
 
@@ -89,5 +90,14 @@ public class GameManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void GameOver()
+    {
+        if(Playercontroller.currenthealth <= 0)
+        {
+            isGameOver = true;
+
+        }
     }
 }
