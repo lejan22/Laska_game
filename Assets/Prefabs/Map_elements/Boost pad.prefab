@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9043946499729672861}
   - component: {fileID: 9043946499729672865}
   - component: {fileID: 9043946499729672858}
+  - component: {fileID: 603111036537237137}
   m_Layer: 0
   m_Name: Boost pad
   m_TagString: Untagged
@@ -335,3 +336,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 0.75096625, z: 2}
   m_Center: {x: 1, y: 0.37548313, z: -1}
+--- !u!208 &603111036537237137
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9043946499729672859}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1, y: 0.056, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 1, y: 0.056, z: -1}
+  m_TimeToStationary: 0.5

@@ -11,13 +11,29 @@ public class GameManager : MonoBehaviour
     private bool isGameOver = false;
     private float time, minutes, seconds, miliseconds;
     public Player_controller Playercontroller;
+
+    private int totalItems = 0;
+    private int itemsCollected = 0;
+
+    [Header("USER INTERFACE")]
+    
+    public TextMeshProUGUI totalRoes;
+    public TextMeshProUGUI collectedRoes;
+
     // Start is called before the first frame update
     void Start()
     {
+
         // Bloquea el uso del raton
         Cursor.lockState = CursorLockMode.Locked;
+
         Playercontroller = FindObjectOfType<Player_controller>();
+
         isGameOver = false;
+
+        totalRoes.text = totalItems.ToString();
+
+        collectedRoes.text = itemsCollected.ToString();
     }
 
     // Update is called once per frame
@@ -25,6 +41,16 @@ public class GameManager : MonoBehaviour
     {
         UpdateTimer();
 
+    }
+    public void UpdateScore()
+    {
+        // Suma +1 al total de huevas recogidas
+        itemsCollected++;
+
+        // Actualiza el texto de las huevas recogidas
+        collectedRoes.text = itemsCollected.ToString();
+
+        
     }
 
     private void UpdateTimer()
@@ -44,6 +70,7 @@ public class GameManager : MonoBehaviour
             timestamp.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, miliseconds);
         }
     }
+
     private bool checkBestTime(string currentTime, string bestTime)
     {
         // Patron del Regex

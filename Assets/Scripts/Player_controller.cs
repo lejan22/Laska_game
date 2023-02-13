@@ -73,6 +73,13 @@ public class Player_controller : MonoBehaviour
 
     private TrailRenderer trail;
 
+    public GameObject collectible;
+
+    public int Rcollected;
+
+    private GameManager gameManager;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -93,6 +100,9 @@ public class Player_controller : MonoBehaviour
 
         trail.enabled = false;
 
+        Rcollected = 0;
+
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -148,12 +158,21 @@ public class Player_controller : MonoBehaviour
         Stop();
 
     }
-
+    
     private void OnCollisionEnter(Collision othercollider)
     {
         if (othercollider.gameObject.CompareTag("Obstacle"))
         {
             GetHurt();
+        }
+    }
+
+    private void OnTriggerEnter(Collider othercollider)
+    {
+        if (othercollider.gameObject.CompareTag("Collectible"))
+        {
+            //Rcollected++;
+           // gameManager.UpdateScore();
         }
     }
     //Salta
