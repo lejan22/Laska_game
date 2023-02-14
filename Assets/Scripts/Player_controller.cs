@@ -238,7 +238,7 @@ public class Player_controller : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && !IsOnGround() && canDJump)
         {
-            playerRigidbody.AddForce(Vector3.up * 5, ForceMode.Impulse);
+            playerRigidbody.AddForce(Vector3.up * 10, ForceMode.Impulse);
 
             canDJump = false;
         }
