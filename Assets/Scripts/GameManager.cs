@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     private int totalItems = 0;
     private int itemsCollected = 0;
+    public GameObject goal;
 
     [Header("USER INTERFACE")]
     

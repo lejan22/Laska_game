@@ -5,7 +5,7 @@ using UnityEngine;
 public class Goal : MonoBehaviour
 {
 
-
+    public GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +16,13 @@ public class Goal : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void OnCollisionEnter(Collision othercollision)
+    {
+        if (othercollision.gameObject.CompareTag("Player"))
+        {
+           
+        }
     }
 }
