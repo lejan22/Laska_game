@@ -67,6 +67,8 @@ public class Player_controller : MonoBehaviour
 
     private Animator _animator;
 
+    private Animator Laskaanim;
+
     public GameObject icon;
 
     private GameObject focalPoint;
@@ -87,6 +89,8 @@ public class Player_controller : MonoBehaviour
         playerRigidbody = GetComponent<Rigidbody>();
 
         _animator = icon.GetComponent<Animator>();
+
+        Laskaanim = GetComponent<Animator>();
 
         healthBar = FindObjectOfType<Healthbar>();
 
@@ -141,6 +145,15 @@ public class Player_controller : MonoBehaviour
         playerRigidbody.AddForce(focalPoint.transform.forward * verticalInput * speed  , ForceMode.Force);
         playerRigidbody.AddForce(focalPoint.transform.right * horizontalInput * speed);
 
+        if(Mathf.Abs(verticalInput)!=0||Mathf.Abs(horizontalInput) != 0)
+        {
+            Laskaanim.SetBool("IsRunning", true);
+        }
+        else
+        {
+            Laskaanim.SetBool("IsRunning", false);
+        }
+        
         //transform.Rotate(Vector3.up * (speed *2) * Time.deltaTime * horizontalInput);
 
         // Velocidad maxima del rigidbody del player
@@ -192,6 +205,8 @@ public class Player_controller : MonoBehaviour
             canDive = true;
 
             canDJump = true;
+
+            Laskaanim.SetBool("IsJumping", true);
         }
        
 
@@ -241,6 +256,8 @@ public class Player_controller : MonoBehaviour
             playerRigidbody.AddForce(Vector3.up * 10, ForceMode.Impulse);
 
             canDJump = false;
+
+            Laskaanim.SetBool("IsJumping", true);
         }
     }
     private void ActionStomp()
@@ -298,6 +315,7 @@ public class Player_controller : MonoBehaviour
 
             _animator.Play("Idle2");
 
+
         }
 
         if (currenthealth == 1)
@@ -313,6 +331,8 @@ public class Player_controller : MonoBehaviour
 
             _animator.Play("Idle3");
             trailfx();
+
+            Laskaanim.SetBool("IsAngry", true);
         }
 
 
