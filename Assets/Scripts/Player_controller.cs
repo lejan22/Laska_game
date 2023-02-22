@@ -180,14 +180,7 @@ public class Player_controller : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider othercollider)
-    {
-        if (othercollider.gameObject.CompareTag("Collectible"))
-        {
-            //Rcollected++;
-           // gameManager.UpdateScore();
-        }
-    }
+    
     //Salta
     public void Jumping()
     {
@@ -207,7 +200,7 @@ public class Player_controller : MonoBehaviour
             canDJump = true;
 
             Laskaanim.SetBool("IsJumping", true);
-        }
+        } 
        
 
 
@@ -218,6 +211,7 @@ public class Player_controller : MonoBehaviour
         if (!IsOnGround())
         {
             playerRigidbody.AddForce(Vector3.down * gravity, ForceMode.Force);
+
         }
     }
 
@@ -230,6 +224,8 @@ public class Player_controller : MonoBehaviour
             jumpInputReleased = true;
 
             lastJumpTime = 0;
+
+            
         }
     }
     //Se lanza hacia adelante
@@ -364,7 +360,9 @@ public class Player_controller : MonoBehaviour
         Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitData, groundDistance, groundLayerMask);
 
         // Devuelve cualquier bool diferente a NULL
-        return hitData.collider != null;  
+        return hitData.collider != null;
+
+        
     }
   
  }
