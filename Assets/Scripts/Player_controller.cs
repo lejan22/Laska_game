@@ -63,7 +63,7 @@ public class Player_controller : MonoBehaviour
 
     public LayerMask groundLayerMask;
 
-    private float groundDistance = 1.5f;
+    private float groundDistance = 0.5f;
 
     private Animator _animator;
 
@@ -125,6 +125,10 @@ public class Player_controller : MonoBehaviour
         fall();
 
         Stop();
+
+
+     
+
         //transform.rotation = focalPoint.transform.rotation;
         // Rota en direccion al FocalPoint(Camara) en Y
         //transform.LookAt(focalPoint.transform);
@@ -145,13 +149,27 @@ public class Player_controller : MonoBehaviour
         playerRigidbody.AddForce(focalPoint.transform.forward * verticalInput * speed  , ForceMode.Force);
         playerRigidbody.AddForce(focalPoint.transform.right * horizontalInput * speed);
 
-        if(Mathf.Abs(verticalInput)!=0||Mathf.Abs(horizontalInput) != 0)
+        if (Mathf.Abs(verticalInput) != 0 || Mathf.Abs(horizontalInput) != 0)
         {
             Laskaanim.SetBool("IsRunning", true);
+
+            if (Laskaanim.GetBool("IsAngry"))
+            {
+                Laskaanim.SetBool("IsRunning", true);
+
+            }
+
+
+
         }
         else
         {
             Laskaanim.SetBool("IsRunning", false);
+            if (Laskaanim.GetBool("IsAngry"))
+            {
+                Laskaanim.SetBool("IsRunning", false);
+
+            }
         }
         
         //transform.Rotate(Vector3.up * (speed *2) * Time.deltaTime * horizontalInput);
@@ -239,12 +257,27 @@ public class Player_controller : MonoBehaviour
             playerRigidbody.AddForce(focalPoint.transform.forward * diveForce, ForceMode.VelocityChange);
 
             canDive = false;
+            Laskaanim.SetBool("IsDiving", true);
         }
 
         
 
     }
+    public void ActionAttack()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Laskaanim.SetBool("IsAttacking", true);
+            Laskaanim.Play("attack");
+        }
+        else
+        {
+            Laskaanim.SetBool("IsAttacking", false);
 
+        }
+
+
+    }
     private void DoubleJump()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && !IsOnGround() && canDJump)
@@ -253,7 +286,7 @@ public class Player_controller : MonoBehaviour
 
             canDJump = false;
 
-            Laskaanim.SetBool("IsJumping", true);
+            
         }
     }
     private void ActionStomp()
@@ -340,10 +373,15 @@ public class Player_controller : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftControl) && IsOnGround())
         {
             speed -= 15;
+            Laskaanim.SetBool("IsWalking", true);
+            Laskaanim.SetBool("IsRunning", false);
         }
         if (Input.GetKeyUp(KeyCode.LeftControl) && IsOnGround())
         {
             speed +=15;
+            Laskaanim.SetBool("IsWalking", false);
+            Laskaanim.SetBool("IsRunning", true);
+
         }
     }
     
@@ -354,10 +392,20 @@ public class Player_controller : MonoBehaviour
             trail.enabled = true;
         }
     }
+
     public bool IsOnGround()
     {
         // Raycast hacia abajo con una distancia determinada
         Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitData, groundDistance, groundLayerMask);
+
+
+        Laskaanim.SetBool("IsAttacking", false);
+        if(hitData.collider == null)
+        {
+            Laskaanim.SetBool("IsJumping", false);
+            Laskaanim.SetBool("IsDiving", false);
+
+        }
 
         // Devuelve cualquier bool diferente a NULL
         return hitData.collider != null;

@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
     private int itemsCollected = 0;
     public GameObject goal;
 
+    private DataPersistance dataPersistence;
+
+
     [Header("USER INTERFACE")]
     
     public TextMeshProUGUI totalRoes;
@@ -125,7 +128,28 @@ public class GameManager : MonoBehaviour
         if(Playercontroller.currenthealth <= 0)
         {
             isGameOver = true;
+            // Guarda el tiempo actual
+            string currentTime = timestamp.text;
 
+            // Si NO existe l mejor tiempo guardado
+            if (!dataPersistence.HasKey("Best Time"))
+            {
+                // Guarda un dato predeterminado
+                dataPersistence.SetString("Best Time", "99:99.09");
+            }
+
+            // Obtiene el mejor tiempo guardado
+            string bestTime = dataPersistence.GetString("Best Time");
+
+            // Guarda el tiempo actual
+            dataPersistence.SetString("Current Time", currentTime);
+
+            // Si el tiempo actual es mejor que el anterior mejor tiempo
+            if (checkBestTime(currentTime, bestTime))
+            {
+                // Guarda el tiempo actual como mejor tiempo
+                dataPersistence.SetString("Best Time", currentTime);
+            }
         }
     }
 }
