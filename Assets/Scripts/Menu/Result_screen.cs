@@ -18,6 +18,7 @@ public class Result_screen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
         _audioS = GetComponent<AudioSource>();
     }
 
@@ -35,5 +36,6 @@ public class Result_screen : MonoBehaviour
             int randomIndex = Random.Range(0, rankvoiceClips.Length);
             _audioS.PlayOneShot(rankvoiceClips[randomIndex], 1);
         }
+        
     }
 }

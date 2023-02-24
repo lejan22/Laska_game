@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6681362743319017695}
   - component: {fileID: 6681362743319017680}
   - component: {fileID: 6681362743319017681}
+  - component: {fileID: 1319837759777416289}
   m_Layer: 4
   m_Name: Water
   m_TagString: Water
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6681362743319017682}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 20.9, y: -13.7, z: -39.271423}
   m_LocalScale: {x: 33.452095, y: 13.247076, z: 33.452095}
   m_Children: []
@@ -96,3 +97,16 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1319837759777416289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681362743319017682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5190649d6632e164cbe81041724319cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Checkpoint: {fileID: 0}

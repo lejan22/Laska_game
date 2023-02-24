@@ -5,7 +5,7 @@ using UnityEngine;
 public class BouncePad : MonoBehaviour
 {
 
-    private PlayerController playercontroller;
+    private Player_controller playercontroller;
 
     public float power = 20f;
 

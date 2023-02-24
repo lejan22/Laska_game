@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Goal : MonoBehaviour
+public class WinButtons : MonoBehaviour
 {
 
-    public GameObject Player;
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +19,21 @@ public class Goal : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision othercollision)
+    public void MainMenu()
     {
-        if (othercollision.gameObject.CompareTag("Player"))
-        {
-            SceneManager.LoadScene("WinScene");
-        }
+        SceneManager.LoadScene("MainMenu");
     }
+
+    public void Level()
+    {
+        SceneManager.LoadScene("Level");
+
+    }
+
+    public void Exiting()
+    {
+        Application.Quit();
+    }
+
+    
 }

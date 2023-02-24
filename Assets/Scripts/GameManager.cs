@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
 
         // Bloquea el uso del raton
         Cursor.lockState = CursorLockMode.Locked;
+        
+        dataPersistence = FindObjectOfType<DataPersistance>();
+
 
         Playercontroller = FindObjectOfType<Player_controller>();
 

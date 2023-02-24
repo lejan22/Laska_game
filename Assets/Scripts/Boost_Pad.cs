@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Boost_Pad : MonoBehaviour
 {
-    private PlayerController playercontroller;
+    private Player_controller playercontroller;
 
     public float power = 20f;
     // Start is called before the first frame update
