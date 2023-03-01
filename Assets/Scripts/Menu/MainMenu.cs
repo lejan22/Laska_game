@@ -7,6 +7,8 @@ using TMPro;
 public class MainMenu : MonoBehaviour
 {
     public GameObject OptionPanel;
+    public GameObject CreditsPanel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -29,4 +31,15 @@ public class MainMenu : MonoBehaviour
     {
         OptionPanel.SetActive(false);
     }
+
+    public void credits()
+    {
+        CreditsPanel.SetActive(true);
+    }
+
+    public void closeCredits()
+    {
+        CreditsPanel.SetActive(false);
+    }
+
 }
