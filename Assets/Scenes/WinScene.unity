@@ -334,7 +334,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 883f9792cef687c4fab5554edb3284a6, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -7627,6 +7627,7 @@ GameObject:
   - component: {fileID: 1299269235}
   - component: {fileID: 1299269234}
   - component: {fileID: 1299269236}
+  - component: {fileID: 1299269237}
   m_Layer: 5
   m_Name: Rank
   m_TagString: Untagged
@@ -7769,6 +7770,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1299269237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299269232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2c9cdcc19f024498bd0f6c75605ed7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioS: {fileID: 362972010}
+  rankvoiceClips:
+  - {fileID: 8300000, guid: a33b6a508a6b4c1438aae3317ca889d3, type: 3}
+  - {fileID: 8300000, guid: 7baa4d1d0b649d146b35dd1df9c36102, type: 3}
+  Celebrationsong: {fileID: 8300000, guid: 38e6dff999cd87443ab84d86a41cea9b, type: 3}
+  _animator: {fileID: 1299269236}
 --- !u!1 &1314349011
 GameObject:
   m_ObjectHideFlags: 0
@@ -7959,16 +7978,20 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353578969}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36d79b431a067cc4ead7696c16f8624d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _audioS: {fileID: 362972010}
-  rankvoiceClips: []
+  rankvoiceClips:
+  - {fileID: 8300000, guid: a33b6a508a6b4c1438aae3317ca889d3, type: 3}
+  - {fileID: 8300000, guid: 7baa4d1d0b649d146b35dd1df9c36102, type: 3}
+  Celebrationsong: {fileID: 0}
   collectedRoes: {fileID: 1366649644}
   TotalTime: {fileID: 1614162784}
-  Rank: {fileID: 0}
+  Rank: {fileID: 1299269234}
+  _animator: {fileID: 1299269236}
 --- !u!4 &1353578971
 Transform:
   m_ObjectHideFlags: 0
