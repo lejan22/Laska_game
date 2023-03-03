@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2191037861685028069}
   - component: {fileID: 2191037861685028064}
   - component: {fileID: 7490000552869347606}
+  - component: {fileID: 493265011815251839}
   m_Layer: 6
   m_Name: Goal
   m_TagString: Goal
@@ -2620,6 +2621,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8587bd05c2c5b6c43b8e6c96dd3258bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTime: {fileID: 0}
+  bestTime: {fileID: 0}
+  Roes: {fileID: 0}
   Player: {fileID: 0}
 --- !u!95 &7490000552869347606
 Animator:
@@ -2640,6 +2644,21 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &493265011815251839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2191037861685028070}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc8da1c6bf67184ebca2047e916c985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTime: {fileID: 0}
+  bestTime: {fileID: 0}
+  Roes: {fileID: 0}
 --- !u!1 &2191037862025438146
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,5 +24,20 @@ public class Enemy_behavior : MonoBehaviour
             //mover por IA
             agent.SetDestination(player.transform.position);
         }
+
+
     }
+     public void TakeDamage(int damage)
+    {
+        lives -= damage;
+        if (lives <= 0)
+        {
+
+            Destroy(gameObject);
+            //GetComponent<Collider>().enabled = false;
+            //this.enabled = false;
+            
+        }
+    }
+    
 }

@@ -81,6 +81,8 @@ public class Player_controller : MonoBehaviour
 
     private GameManager gameManager;
 
+    public ParticleSystem runDust;
+
 
 
     // Start is called before the first frame update
@@ -158,9 +160,6 @@ public class Player_controller : MonoBehaviour
                 Laskaanim.SetBool("IsRunning", true);
 
             }
-
-
-
         }
         else
         {
@@ -168,11 +167,22 @@ public class Player_controller : MonoBehaviour
             if (Laskaanim.GetBool("IsAngry"))
             {
                 Laskaanim.SetBool("IsRunning", false);
-
+               
             }
         }
         
         //transform.Rotate(Vector3.up * (speed *2) * Time.deltaTime * horizontalInput);
+
+        if(speed>= 40)
+        {
+            runDust.gameObject.SetActive(true);
+            runDust.Play();
+        }
+        else
+        {
+            runDust.gameObject.SetActive(false);
+            runDust.Stop();
+        }
 
         // Velocidad maxima del rigidbody del player
         if (playerRigidbody.velocity.magnitude > maxspeed)

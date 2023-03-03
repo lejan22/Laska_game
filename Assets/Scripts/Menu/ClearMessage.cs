@@ -12,7 +12,7 @@ public class ClearMessage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _audioS = GetComponent<AudioSource>();
+       
 
         StartCoroutine(Clearmessage());
     }
@@ -28,13 +28,16 @@ public class ClearMessage : MonoBehaviour
 
         _animator.Play("Clear_idle");
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(8);
 
         
         _animator.Play("Clear");
         Debug.Log("Henlo");
-        int randomIndex = Random.Range(0, rankvoiceClips.Length);
+       int randomIndex = Random.Range(0, rankvoiceClips.Length);
         _audioS.PlayOneShot(rankvoiceClips[randomIndex], 1);
+
+        yield return new WaitForSeconds(1);
+
         _audioS.PlayOneShot(Celebrationsong, 1);
     }
 }
