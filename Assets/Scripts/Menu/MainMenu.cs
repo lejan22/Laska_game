@@ -42,4 +42,8 @@ public class MainMenu : MonoBehaviour
         CreditsPanel.SetActive(false);
     }
 
+    public void Buhbye()
+    {
+        Application.Quit();
+    }
 }

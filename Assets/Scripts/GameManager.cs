@@ -48,6 +48,7 @@ public class GameManager : MonoBehaviour
     {
         UpdateTimer();
 
+
     }
     public void UpdateScore()
     {
