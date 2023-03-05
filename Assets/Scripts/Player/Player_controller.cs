@@ -208,7 +208,15 @@ public class Player_controller : MonoBehaviour
         }
     }
 
-    
+    private void OnTriggerEnter(Collider otherCollider)
+    {
+        if (otherCollider.CompareTag("Heal"))
+        {
+            Getheal();
+        }
+        
+    }
+
     //Salta
     public void Jumping()
     {
@@ -401,6 +409,11 @@ public class Player_controller : MonoBehaviour
         {
             trail.enabled = true;
         }
+    }
+
+    public void Getheal()
+    {
+        currenthealth++;
     }
 
     public bool IsOnGround()
