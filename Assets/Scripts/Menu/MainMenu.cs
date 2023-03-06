@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject OptionPanel;
     public GameObject CreditsPanel;
+    public GameObject ControlsPanel;
 
 
     // Start is called before the first frame update
@@ -40,6 +41,16 @@ public class MainMenu : MonoBehaviour
     public void closeCredits()
     {
         CreditsPanel.SetActive(false);
+    }
+
+    public void Controls()
+    {
+        ControlsPanel.SetActive(true);
+    }
+
+    public void closeControls()
+    {
+        ControlsPanel.SetActive(false);
     }
 
     public void Buhbye()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -29,7 +30,11 @@ public class PauseMenu : MonoBehaviour
         PausePanel.SetActive(false);
 
     }
-
+    public void Restart()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Level");
+    }
     public void Pause()
     {
         if (!isPaused)

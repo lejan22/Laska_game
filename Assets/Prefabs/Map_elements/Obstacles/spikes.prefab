@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2533547822858762639}
   - component: {fileID: 2533547822858762637}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: spikes
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -120,6 +120,10 @@ PrefabInstance:
       value: spike (3)
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 06f96c834ed379545bd9c66348bece4f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 06f96c834ed379545bd9c66348bece4f, type: 3}
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
@@ -200,6 +204,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 06f96c834ed379545bd9c66348bece4f, type: 3}
       propertyPath: m_Name
       value: spike (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 06f96c834ed379545bd9c66348bece4f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 06f96c834ed379545bd9c66348bece4f, type: 3}
       propertyPath: m_TagString
@@ -284,6 +292,10 @@ PrefabInstance:
       value: spike
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 06f96c834ed379545bd9c66348bece4f, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 06f96c834ed379545bd9c66348bece4f, type: 3}
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
@@ -364,6 +376,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 06f96c834ed379545bd9c66348bece4f, type: 3}
       propertyPath: m_Name
       value: spike (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 06f96c834ed379545bd9c66348bece4f, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 06f96c834ed379545bd9c66348bece4f, type: 3}
       propertyPath: m_TagString
