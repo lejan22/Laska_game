@@ -34,11 +34,14 @@ public class Collectible : MonoBehaviour
     {
         if (otherCollider.gameObject.CompareTag("Player"))
         {
+            //Makes the animation of being collected
             animated.SetBool("collected", true);
-            Destroy(gameObject,0.6f);
-            
-            
 
+            //Destroys the game object after 0.2 seconds
+            Destroy(gameObject,0.2f);
+            
+            
+            //Adds a point to the score
             gameManager.UpdateScore();
         }
     }

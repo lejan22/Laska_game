@@ -9,10 +9,10 @@ public class BouncePad : MonoBehaviour
 
     public float power = 20f;
 
-    public bool shootleft;
-    public bool shootup;
-    public bool shootright;
-    public bool shootdown;
+    //public bool shootleft;
+    //public bool shootup;
+    //public bool shootright;
+    //public bool shootdown;
 
     private Animator _animator;
 
@@ -20,31 +20,37 @@ public class BouncePad : MonoBehaviour
     {
 
 
-        // Obtiene el rigidbody del GameObject
+        // Gets rigidbody from the GameObject
         Rigidbody playerRigidbody = other.gameObject.GetComponent<Rigidbody>();
-       /* if (shootup == true)
-        {
-            playerRigidbody.AddRelativeForce(Vector3.up * power, ForceMode.Impulse);
-            _animator.Play("Bounce_action");
-        }
-        if (shootdown == true)
-        {
-            playerRigidbody.AddRelativeForce(Vector3.down * power, ForceMode.Impulse);
-            _animator.Play("Bounce_action");
-        }
-        if (shootright == true)
-        {
-            playerRigidbody.AddRelativeForce(Vector3.right * power, ForceMode.Impulse);
-            _animator.Play("Bounce_action");
-        }
-        if (shootleft == true)
-        {
-            playerRigidbody.AddRelativeForce(Vector3.left * power, ForceMode.Impulse);
-            _animator.Play("Bounce_action");
-        }
-       */
 
+      
+
+       //Shoots it towards the direction of the game object
         playerRigidbody.AddForce(transform.up * power, ForceMode.Impulse);
+
+
+        //I did this before finding an easier way to make the player be hot towards the direction the bouncepad faces.
+        /* if (shootup == true)
+       {
+           playerRigidbody.AddRelativeForce(Vector3.up * power, ForceMode.Impulse);
+           _animator.Play("Bounce_action");
+       }
+       if (shootdown == true)
+       {
+           playerRigidbody.AddRelativeForce(Vector3.down * power, ForceMode.Impulse);
+           _animator.Play("Bounce_action");
+       }
+       if (shootright == true)
+       {
+           playerRigidbody.AddRelativeForce(Vector3.right * power, ForceMode.Impulse);
+           _animator.Play("Bounce_action");
+       }
+       if (shootleft == true)
+       {
+           playerRigidbody.AddRelativeForce(Vector3.left * power, ForceMode.Impulse);
+           _animator.Play("Bounce_action");
+       }
+      */
     }
-   
+
 }

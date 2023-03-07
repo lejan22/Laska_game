@@ -131,9 +131,7 @@ public class Player_controller : MonoBehaviour
 
      
 
-        //transform.rotation = focalPoint.transform.rotation;
-        // Rota en direccion al FocalPoint(Camara) en Y
-        //transform.LookAt(focalPoint.transform);
+      
         transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
 
     }
@@ -145,8 +143,7 @@ public class Player_controller : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
        verticalInput = Input.GetAxis("Vertical");
 
-       //playerRigidbody.AddRelativeForce(Vector3.forward * speed * verticalInput, ForceMode.Force);
-       //playerRigidbody.AddRelativeForce(Vector3.right * horizontalInput * speed);
+      //Character moves based on the position of the camera. 
 
         playerRigidbody.AddForce(focalPoint.transform.forward * verticalInput * speed  , ForceMode.Force);
         playerRigidbody.AddForce(focalPoint.transform.right * horizontalInput * speed);
@@ -171,7 +168,7 @@ public class Player_controller : MonoBehaviour
             }
         }
         
-        //transform.Rotate(Vector3.up * (speed *2) * Time.deltaTime * horizontalInput);
+      ;
 
         if(speed>= 40)
         {
@@ -184,17 +181,14 @@ public class Player_controller : MonoBehaviour
             runDust.Stop();
         }
 
-        // Velocidad maxima del rigidbody del player
+        // Maximum speed for the rigidbody
         if (playerRigidbody.velocity.magnitude > maxspeed)
             {
-                // Mantiene a la velocidad maxima
+                // Keeps max speed
                 playerRigidbody.velocity = playerRigidbody.velocity.normalized * maxspeed;
            }
 
-        // if(verticalInput == 0)
-        //{
-        //  playerRigidbody.velocity = playerRigidbody.velocity.normalized * 0;
-        //  }
+       
 
         Stop();
 
@@ -217,7 +211,7 @@ public class Player_controller : MonoBehaviour
         
     }
 
-    //Salta
+    //JUumps
     public void Jumping()
     {
         if (Input.GetKeyDown(KeyCode.Space) && IsOnGround())
@@ -242,6 +236,7 @@ public class Player_controller : MonoBehaviour
 
         
     }
+
     public void fall()
     {
         if (!IsOnGround())
@@ -251,6 +246,7 @@ public class Player_controller : MonoBehaviour
         }
     }
 
+    //Adds gravity to the player while in the air
     public void OnJumpUp()
     {
         if (playerRigidbody.velocity.y > 0 && isJumping)
@@ -264,7 +260,7 @@ public class Player_controller : MonoBehaviour
             
         }
     }
-    //Se lanza hacia adelante
+    //Pressing space again while airborn makes Laska go forwards
     private void Diving()
     {
         if (Input.GetKeyDown(KeyCode.Space) && !IsOnGround()&& canDive)
@@ -281,6 +277,8 @@ public class Player_controller : MonoBehaviour
         
 
     }
+
+    //Laska attacks
     public void ActionAttack()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
@@ -296,6 +294,8 @@ public class Player_controller : MonoBehaviour
 
 
     }
+
+    //If player is not in the ground and hits the attack button she will atytack and get a bit more of height
     private void DoubleJump()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && !IsOnGround() && canDJump)
@@ -307,6 +307,7 @@ public class Player_controller : MonoBehaviour
             
         }
     }
+    //Makes Laska drop to the ground directly
     private void ActionStomp()
     {
         // Si presionas el click izquierdo del raton
@@ -318,6 +319,8 @@ public class Player_controller : MonoBehaviour
           
         }
     }
+
+    //Makes the drag less strong
     private void Stop()
     {
         if (Input.GetKeyUp(KeyCode.W))
@@ -341,6 +344,7 @@ public class Player_controller : MonoBehaviour
         }
     }
 
+    //Adds speed and jump force to Laska as she gets hurt, makig the game harder to control yet faster to control.
     public void GetHurt()
     {
         currenthealth--;
@@ -384,7 +388,7 @@ public class Player_controller : MonoBehaviour
 
 
     }
-
+    //If the player is on the floor and keeps the control key and moves, it will move slowly
     public void GoSlow()
     {
 
@@ -402,7 +406,7 @@ public class Player_controller : MonoBehaviour
 
         }
     }
-    
+    //Makes the trail appear
     private void trailfx()
     {
         if(speed >= 39)
@@ -410,15 +414,15 @@ public class Player_controller : MonoBehaviour
             trail.enabled = true;
         }
     }
-
+    //Heals herself
     public void Getheal()
     {
         currenthealth++;
     }
-
+    
     public bool IsOnGround()
     {
-        // Raycast hacia abajo con una distancia determinada
+        // Raycast down with a determined position
         Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitData, groundDistance, groundLayerMask);
 
 
@@ -430,7 +434,7 @@ public class Player_controller : MonoBehaviour
 
         }
 
-        // Devuelve cualquier bool diferente a NULL
+        
         return hitData.collider != null;
 
         

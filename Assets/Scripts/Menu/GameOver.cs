@@ -17,12 +17,12 @@ public class GameOver : MonoBehaviour
     {
         dataPersistence = FindObjectOfType<DataPersistance>();
 
-        // Obtiene el mejor tiempo y el actual
+        // Gets the time
         currentTime.text = dataPersistence.GetString("currentTime");
-        //bestTime.text = dataPersistence.GetString("bestTime");
+        
         Roes.text = dataPersistence.GetString("Roes");
 
-        // Desbloquea el raton
+        // Unlocks mouse
         Cursor.lockState = CursorLockMode.None;
     }
 }

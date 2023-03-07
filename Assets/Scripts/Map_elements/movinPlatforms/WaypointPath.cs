@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WaypointPath : MonoBehaviour
 {
-
+    //To make a path with the children
    public Transform GetWaypoint(int waypointIndex)
     {
         return transform.GetChild(waypointIndex);

@@ -37,7 +37,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackPoint == null)
             return;
-
+        //To see the area of the hitbox
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 
     } 

@@ -39,7 +39,7 @@ public class MoaiMove : MonoBehaviour
         _elapsedTime += Time.deltaTime;
 
         float elapsedPercentage = _elapsedTime / _timeToWaypoint;
-        //Hace smooth el principio y el final para facilitar que el jugador pueda subirse
+        //Makes the movement smooth to make the player be able to get on top easier
         elapsedPercentage = Mathf.SmoothStep(0, 1, elapsedPercentage);
         transform.position = Vector3.Lerp(_previousWaypoint.position, _targetWaypoint.position, elapsedPercentage);
 
@@ -50,6 +50,7 @@ public class MoaiMove : MonoBehaviour
             TargetNextWaypoint();
         }
     }
+    //To go to the next waypoint(it's an empty game object)
     private void TargetNextWaypoint()
     {
         _previousWaypoint = _waypointpath.GetWaypoint(_targetWaypointIndex);

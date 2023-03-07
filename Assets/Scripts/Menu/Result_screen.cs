@@ -29,22 +29,9 @@ public class Result_screen : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
     }
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     
 
-    /*public void rank()
-    {
-        if (Roes == 100)
-        {
-            Rank.text = "S"; 
-            int randomIndex = Random.Range(0, rankvoiceClips.Length);
-            _audioS.PlayOneShot(rankvoiceClips[randomIndex], 1);
-        }
-        
-    }*/
+   
 }

@@ -12,22 +12,22 @@ public class Player_shadow : MonoBehaviour
 
     void Update()
     {
-        // Raycast en direccion hacia abajo
+        // Raycast looking down
         if (Physics.Raycast(player.transform.position, Vector3.down, out RaycastHit hitData, 50))
         {
-            // Guarda el hit del RayCast
+            // Saves the hit from the Raycast
             hitDataPoint = hitData.point;
 
-            // Modifica el axis vertical de este Vector3
+            // Changes the axis of this Vector3
             hitDataPoint.y += 0.1f;
 
-            // Sigue la posicion del hit
+            // Follows position of the hitpoint
             transform.position = hitDataPoint;
 
-            // Toma la altura entre la sombra y el player
+            // gets the ground distance
             groundDistance = transform.position.y - player.transform.position.y;
 
-            // Escala la sombra segun la distancia con el suelo
+            //Changes scale of the shado depending on the height from the ground
             transform.localScale = Vector3.one * -groundDistance;
         }
     }

@@ -17,13 +17,13 @@ public class Healthbar : MonoBehaviour
         _animator = icon.GetComponent<Animator>();
     }
 
-    //Que el slider empieze concorde a la vida maxima que tiene el jefe
+    //Starts with the same value as the player's life
     public void SetMaxHealth(int health)
     {
         slider.maxValue = health;
         slider.value = health;
     }
-    //Para hacer que el slider concuerde con la vida del boss
+    //Making the life be the same as the player's health
     public void SetHealth(int health)
     {
         slider.value = health;

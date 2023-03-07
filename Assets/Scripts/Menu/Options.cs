@@ -32,74 +32,70 @@ public class Options : MonoBehaviour
         GetEffectsVolume();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    //
     public void GetGeneralVolume()
     {
-        // Si no existe, guarda un valor predeterminado
+        // if it doesn't,saves predetermined value
         if (!dataPersistence.HasKey("MasterVolume"))
         {
             SetGeneralVolume(DefaultGeneralVolume);
         }
 
-        // Obtiene el valor guardado
+        // Gets the saved value
         generalSlider.value = dataPersistence.GetFloat("MasterVolume");
     }
 
-    // Obtiene la opcion MusicVolume
+    // Gets the option MusicVolume
     public void GetMusicVolume()
     {
-        // Si no existe, guarda un valor predeterminado
+        // if it doesn't,saves predetermined value
         if (!dataPersistence.HasKey("MusicVolume"))
         {
             SetMusicVolume(DefaultMusicVolume);
         }
 
-        // Obtiene el valor guardado
+        // Gets the saved option
         musicSlider.value = dataPersistence.GetFloat("MusicVolume");
     }
 
-    // Obtiene la opcion EffectsVolume
+    // Gets option EffectsVolume
     public void GetEffectsVolume()
     {
-        // Si no existe, guarda un valor predeterminado
+        // if it doesn't,saves predetermined value
         if (!dataPersistence.HasKey("SFXVolume"))
         {
             SetEffectsVolume(DefaultEffectsVolume);
         }
 
-        // Obtiene el valor guardado
+        // Gets the saved option
         soundfxSlider.value = dataPersistence.GetFloat("SFXVolume");
     }
     public void SetGeneralVolume(float volume)
     {
-        // Cambia el volumen en el AudioMixer
+        // Changes volume in AudioMixer
         audioMixer.SetFloat("MasterVolume", Mathf.Log10(volume) * 20);
 
-        // Guarda la opcion
+        // Saves option
         dataPersistence.SetFloat("MasterVolume", volume);
     }
 
     // Setea la opcion MusicVolume
     public void SetMusicVolume(float volume)
     {
-        // Cambia el volumen en el AudioMixer
+        // Changes volume in AudioMixer
         audioMixer.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
 
-        // Guarda la opcion
+        // Saves option
         dataPersistence.SetFloat("MusicVolume", volume);
     }
 
     // Setea la opcion EffectsVolume
     public void SetEffectsVolume(float volume)
     {
-        // Cambia el volumen en el AudioMixer
+        // Changes volume in AudioMixer
         audioMixer.SetFloat("SFXVolume", Mathf.Log10(volume) * 20);
 
-        // Guarda la opcion
+        // Saves option
         dataPersistence.SetFloat("SFXVolume", volume);
     }
 }

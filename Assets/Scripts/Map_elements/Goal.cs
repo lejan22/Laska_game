@@ -19,11 +19,6 @@ public class Goal : MonoBehaviour
         dataPersistence = FindObjectOfType<DataPersistance>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnCollisionEnter(Collision othercollision)
     {
@@ -32,9 +27,10 @@ public class Goal : MonoBehaviour
             dataPersistence.SetString("currentTime", currentTime.text);
             dataPersistence.SetString("bestTime",bestTime.text);
             dataPersistence.SetString("Roes",Roes.text);
-            // Desbloquea el raton
+            //Unlocks mouse
             Cursor.lockState = CursorLockMode.None;
 
+            //Sends you to the winning scene
             SceneManager.LoadScene("WinScene");
         }
     }

@@ -21,7 +21,7 @@ public class Enemy_behavior : MonoBehaviour
     {
         if (agent != null && player != null)
         {
-            //mover por IA
+            //move with IA
             agent.SetDestination(player.transform.position);
         }
 
@@ -34,8 +34,7 @@ public class Enemy_behavior : MonoBehaviour
         {
 
             Destroy(gameObject);
-            //GetComponent<Collider>().enabled = false;
-            //this.enabled = false;
+          
             
         }
     }

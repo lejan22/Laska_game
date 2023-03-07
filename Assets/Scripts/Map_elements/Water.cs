@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
+	//Water Shader 
+
 
 	Vector3 waveSource1 = new Vector3(2.0f, 0.0f, 2.0f);
 	public float waveFrequency = 0.53f;

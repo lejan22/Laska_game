@@ -7,29 +7,19 @@ public class WinButtons : MonoBehaviour
 {
 
    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
+    //Goes back to the menu
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
-
+    //Goes to the level
     public void Level()
     {
         SceneManager.LoadScene("Level");
 
     }
-
+    //Exits the app
     public void Exiting()
     {
         Application.Quit();

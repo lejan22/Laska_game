@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         Playercontroller = FindObjectOfType<Player_controller>();
 
         isGameOver = false;
-
+        totalItems = GameObject.FindGameObjectsWithTag("Collectible").Length;
         totalRoes.text = totalItems.ToString();
 
         collectedRoes.text = itemsCollected.ToString();
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     }
     public void UpdateScore()
     {
-        // Suma +1 al total de huevas recogidas
+        // Adds +1 to the total of roes collected
         itemsCollected++;
 
         // Actualiza el texto de las huevas recogidas
@@ -63,59 +63,59 @@ public class GameManager : MonoBehaviour
 
     private void UpdateTimer()
     {
-        // Si GameOver es FALSE
+        // If GameOver is FALSE
         if (!isGameOver)
         {
-            // Guarda y suma deltatime
+            // Saves and ads deltaTime
             time += Time.deltaTime;
 
-            // Convierte time en minutos, segundos y milisegundos
+            //Turns time to minutes, seconds y miliseconds
             miliseconds = (int)((time - (int)time) * 100);
             seconds = (int)(time % 60);
             minutes = (int)(time / 60 % 60);
 
-            // Cambia el texto con los valores formateados a un solo String
+            // Turns text into the string of numbers
             timestamp.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, miliseconds);
         }
     }
 
     private bool checkBestTime(string currentTime, string bestTime)
     {
-        // Patron del Regex
+        //  Regex pattern
         string pattern = "([0-9][0-9]):([0-9][0-9]).([0-9][0-9])";
 
-        // Guarda y divide el string en grupos con el pattern
+    
         string[] currentTimeSplit = Regex.Split(currentTime, pattern);
         string[] bestTimeSplit = Regex.Split(bestTime, pattern);
 
-        // Parsea el Grupo 01 de String a Float
+        
         float currentMinutes = float.Parse(currentTimeSplit[1]);
         float bestMinutes = float.Parse(bestTimeSplit[1]);
 
-        // Parsea el Grupo 02 de String a Float
+       
         float currentSeconds = float.Parse(currentTimeSplit[2]);
         float bestSeconds = float.Parse(bestTimeSplit[2]);
 
-        // Parsea el Grupo 03 de String a Float
+      
         float currentMilisec = float.Parse(currentTimeSplit[3]);
         float bestMilisec = float.Parse(bestTimeSplit[3]);
 
-        // Si currentMinutes es menor a bestMinutes
+       
         if (currentMinutes < bestMinutes)
         {
             return true;
         }
 
-        // Si currentMinutes es igual a bestMinutes
+        
         if (currentMinutes == bestMinutes)
         {
-            // Si currentSeconds es menor a bestSeconds
+            
             if (currentSeconds < bestSeconds)
             {
                 return true;
             }
 
-            // Si currentSeconds es igual a bestSeconds y currentMilisec menor o igual a bestMilisec
+           
             if (currentSeconds == bestSeconds && currentMilisec <= bestMilisec)
             {
                 return true;
@@ -132,26 +132,26 @@ public class GameManager : MonoBehaviour
         if(Playercontroller.currenthealth <= 0)
         {
             isGameOver = true;
-            // Guarda el tiempo actual
+            // saves the current time
             string currentTime = timestamp.text;
 
-            // Si NO existe l mejor tiempo guardado
+            
             if (!dataPersistence.HasKey("Best Time"))
             {
-                // Guarda un dato predeterminado
+                
                 dataPersistence.SetString("Best Time", "99:99.09");
             }
 
-            // Obtiene el mejor tiempo guardado
+            
             string bestTime = dataPersistence.GetString("Best Time");
 
-            // Guarda el tiempo actual
+            // Saves current time
             dataPersistence.SetString("Current Time", currentTime);
 
-            // Si el tiempo actual es mejor que el anterior mejor tiempo
+           
             if (checkBestTime(currentTime, bestTime))
             {
-                // Guarda el tiempo actual como mejor tiempo
+                // save current time as best time
                 dataPersistence.SetString("Best Time", currentTime);
             }
         }
