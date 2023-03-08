@@ -81,7 +81,7 @@ public class Player_controller : MonoBehaviour
 
     private GameManager gameManager;
 
-    public ParticleSystem runDust;
+    
 
 
 
@@ -168,18 +168,9 @@ public class Player_controller : MonoBehaviour
             }
         }
         
-      ;
+      
 
-        if(speed>= 40)
-        {
-            runDust.gameObject.SetActive(true);
-            runDust.Play();
-        }
-        else
-        {
-            runDust.gameObject.SetActive(false);
-            runDust.Stop();
-        }
+      
 
         // Maximum speed for the rigidbody
         if (playerRigidbody.velocity.magnitude > maxspeed)
@@ -196,7 +187,7 @@ public class Player_controller : MonoBehaviour
     
     private void OnCollisionEnter(Collision othercollider)
     {
-        if (othercollider.gameObject.CompareTag("Obstacle"))
+        if (othercollider.gameObject.CompareTag("Obstacle")|| (othercollider.gameObject.CompareTag("Water")))
         {
             GetHurt();
         }
